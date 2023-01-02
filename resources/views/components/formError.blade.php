@@ -1,0 +1,1 @@
+<h3 class="text-sm text-red-500">{{$msg}}</h3>
