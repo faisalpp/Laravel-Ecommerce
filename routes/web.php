@@ -26,13 +26,7 @@ use Illuminate\Support\Facades\Hash;
 */
 
 Route::get('/mn',function(){
-  $stripe = new \Stripe\StripeClient('sk_test_51MLNnUSIUsrVmPAjB0qq1h2oSX3uBvhA2lxKSJ1UZBll6MIOoiDZQwKoFSBKwMGABVdML9r8woDOtnwCcNLjc2uK00SKUfhXCF');
-  $req = $stripe->prices->create([
-    'unit_amount' => 1200,
-    'currency' => 'usd',
-    'product_data'=>['name'=>'round Chair'],
-  ]);
-  print_r($req->currency);
+  session()->remove('cart');
 });
 
 //USER SERVING ROUTES         
@@ -71,18 +65,14 @@ Route::middleware(['isLogin'])->group(function(){
   //3. Save User Address in Session
   Route::post('/confirm-checkout',[CheckoutController::class,'confirmCheckout']);
   //4. Render when Order Is Success
-  Route::put('/order',[OrderController::class,'orderSuccess']);
+  Route::post('/place-order',[OrderController::class,'placeOrder']);
   //5. Render Order History Page
   Route::get('/order-history',[OrderHistoryController::class,'index']);
   //6. Billing Form
-  Route::get('/billing',[BillingController::class,'index']);
-  Route::post('/create-checkout-session',[BillingController::class,'checkoutSession']);
-  Route::get('/success',function(){
-    return view('success');
-  });
-  Route::get('/cancel',function(){
-    return view('cancel');
-  });
+  Route::post('/billing',[BillingController::class,'index']);
+  Route::get('/create-checkout-session',[BillingController::class,'checkoutSession']);
+  Route::get('/order-success/{session_id?}',[OrderController::class,'orderSuccess']);
+  Route::view('/order-cancel',[OrderController::class,'orderCancel']);
 
 });
 //AUTHORIZATION & AUTHENTICATION
@@ -111,6 +101,8 @@ Route::middleware(['isLogin'])->group(function(){
   Route::get('/admin/view/products',[AdminController::class,'allProducts']);
   //4. To Render All Categories View
   Route::get('/admin/view/categories',[AdminController::class,'allCategories']);
+  //4. To Render All Categories View
+  Route::get('/admin/view/shippings',[AdminController::class,'allShippings']);
   //5. Render Create Users Form View
   Route::get('/admin/view/form/user',[AdminController::class,'createUser']);
   //6. Render Update User Form View
@@ -123,6 +115,11 @@ Route::middleware(['isLogin'])->group(function(){
   Route::get('/admin/view/form/category',[AdminController::class,'createCategory']);
   //10. Render Update Category View
   Route::get('/admin/view/form/category-update/{id}',[AdminController::class,'updateCategory']);
+  //11. Render Create Shipping View
+  Route::get('/admin/view/form/shipping',[AdminController::class,'createShipping']);
+  //12. Render Update Shipping View
+  Route::get('/admin/view/form/shipping-update/{id}',[AdminController::class,'updateShipping']);
+
 
  //ADMIN CRUD OPERATION ROUTES
 
@@ -149,5 +146,13 @@ Route::middleware(['isLogin'])->group(function(){
   Route::get('/admin/category/delete/{id}',[CrudController::class,'deleteCategory']);
   //3.3 Update Category with Id
   Route::post('/admin/category/update',[CrudController::class,'updateCategory']);
+
+ //4. Shipping CRUD Operations
+  //4.1 Create Shipping
+  Route::post('/admin/shipping/new',[CrudController::class,'createShipping']);
+  //4.2 Delete Category with Id
+  Route::get('/admin/shipping/delete/{id}',[CrudController::class,'deleteShipping']);
+  //4.3 Update Category with Id
+  Route::post('/admin/shipping/update',[CrudController::class,'updateShipping']);
 });
  

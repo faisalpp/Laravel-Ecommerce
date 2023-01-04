@@ -6,6 +6,7 @@ use App\Models\Categories;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Shipping;
 
 class AdminController extends Controller
 {
@@ -34,18 +35,28 @@ class AdminController extends Controller
     $categories = Categories::all();
     return view('admin.AllCategories')->with(compact('categories'));
   }
-  public function createProduct(){
-    $categories = Categories::where('status','1')->get();
-    $url = url('/admin/product/new');
-    return view('admin.CreateProduct')->with(compact('url','categories'));
+  public function allShippings(){
+    $shippings = Shipping::all();
+    return view('admin.AllShipping')->with(compact('shippings'));
+  }
+
+  public function createUser(){
+    $url = url('/admin/user/new');
+    return view('admin.CreateUser')->with('url',$url);
   }
   public function createCategory(){
     $url = url('/admin/category/new');
     return view('admin.CreateCategory')->with('url',$url);
   }
-  public function createUser(){
-    $url = url('/admin/user/new');
-    return view('admin.CreateUser')->with('url',$url);
+
+  public function createProduct(){
+    $categories = Categories::where('status','1')->get();
+    $url = url('/admin/product/new');
+    return view('admin.CreateProduct')->with(compact('url','categories'));
+  }
+  public function createShipping(){
+    $url = url('/admin/shipping/new');
+    return view('admin.CreateShipping')->with(compact('url'));
   }
   
   public function updateUser($id){
@@ -65,6 +76,11 @@ class AdminController extends Controller
     $category = Categories::where('category_id',$id)->first();
     $url = url('/admin/category/update');
     return view('admin.CreateCategory')->with(compact('url','category'));
+  }
+  public function updateShipping($id){
+    $shipping = Shipping::where('shipping_id',$id)->first();
+    $url = url('/admin/shipping/update');
+    return view('admin.CreateShipping')->with(compact('url','shipping'));
   }
 
 }

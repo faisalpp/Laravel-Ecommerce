@@ -9,12 +9,11 @@
   $item_subtotal=0;
   $shipping_price = $shipping->first()->shipping_price;
 @endphp
-<form id="form" action="{{url('/order')}}" method="post" class="flex w-full h-full border-t-2">
+<form id="form" action="{{url('/place-order')}}" method="post" class="flex w-full h-full border-t-2">
  <div class="flex flex-col px-10 w-1/2 mt-10 ml-10 mb-10">  
   <div class="flex flex-col border-2 px-5 border-gray-400 rounded-lg h-fit">
    <div class="flex justify-center items-center py-5 border-b-2 border-gray-400"><h3 class="text-gray-400">Contact</h3><p class="w-96 text-gray-600 ml-10">{{session()->get('user')['email']}}</p><a href="{{url('/view/checkout')}}" class="text-xs text-black">Change</a></div>
    <div class="flex justify-center py-5 items-center"><h3 class="text-gray-400">Ship To</h3><p class="text-gray-600 w-96 ml-10">{{session()->get('order_address')['address']}}, {{session()->get('order_address')['city']}} {{session()->get('order_address')['postal_code']}}, {{session()->get('order_address')['country']}}</p><a href="{{url('/view/checkout')}}" class="text-xs text-black">Change</a></div>
-   <div class="flex justify-center items-center py-5 border-t-2 border-gray-400"><h3 class="text-gray-400">Method</h3><p class="w-96 text-gray-600 ml-10">Home Delivery</p><h3 class="text-xs text-black">${{$shipping_price}}</h3></div>
   </div>
   <div class="mt-10">
    <h3 class="text-xl font-semibold mb-2">Payment Method</h3>

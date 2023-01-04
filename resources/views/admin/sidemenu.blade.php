@@ -7,8 +7,8 @@
   <a href="{{url('/admin/view/users')}}"><li class="hover:underline cursor-pointer">Users</li></a>
   <a href="{{url('/admin/view/products')}}"><li class="hover:underline cursor-pointer">Products</li></a>
   <a href="{{url('/admin/view/categories')}}"><li class="hover:underline cursor-pointer">Categories</li></a>
-  <a href="{{url('/admin/view/form/user')}}"><li class="hover:underline cursor-pointer">Shipping</li></a>
-  <a href="{{url('/admin/view/form/product')}}"><li class="hover:underline cursor-pointer">Recycle Bin</li></a>
+  <a href="{{url('/admin/view/shippings')}}"><li class="hover:underline cursor-pointer">Shipping</li></a>
+  <a href="{{url('/admin/view/recycle')}}"><li class="hover:underline cursor-pointer">Recycle Bin</li></a>
  </ul>
 </div>
 </div>

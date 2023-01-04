@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function orderSuccess(Request $request){
+    public function placeOrder(Request $request){
         $request->validate([
           'payment_type'=>'required',
         ]);
@@ -37,4 +37,18 @@ class OrderController extends Controller
             return redirect('/create-checkout-session');
         }
     }
+
+    public function orderSuccess($session_id=''){
+     $stripe = new \Stripe\StripeClient('sk_test_51MLNnUSIUsrVmPAjB0qq1h2oSX3uBvhA2lxKSJ1UZBll6MIOoiDZQwKoFSBKwMGABVdML9r8woDOtnwCcNLjc2uK00SKUfhXCF');
+     
+     $session = $stripe->checkout->sessions->retrieve($session_id);
+     $customerDetails = $session->customer_details;
+     session()->remove('cart');
+     return view('orderComplete')->with(compact('customerDetails'));
+    }
+
+    public function orderCancel(){
+        return view('cancel');
+    }
+
 }

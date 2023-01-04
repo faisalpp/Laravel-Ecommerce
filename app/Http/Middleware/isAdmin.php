@@ -16,11 +16,10 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        // if($request['role'] == '1'){
-        //     return $next($request);
-        // }else{
-        //     return abort(401);
-        // }
-        return $next($request);
+        if($request->session('user') && $request->session()->get('user')['role'] == '1'){
+            return $next($request);
+        }else{
+        return abort(401);
+        }
     }
 }

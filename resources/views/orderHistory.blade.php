@@ -10,12 +10,10 @@
    <input type="text" placeholder="Search Order History" class="px-2 py-2 bg-gray-100 border-2 border-gray-400 text-gray-400 rounded-l-lg h-10 w-96"/>
    <button class="bg-blue-500 text-white font-bold px-2 rounded-r-lg h-10">Search</button>
   </div>
- </div>
-  
- <x-historyItem/>
- <x-historyItem/>
- <x-historyItem/>
- <x-historyItem/>
+ </div>   
+ @foreach ($orderHistory as $order)    
+ <x-historyItem :orderId="$order->order_id" :createdAt="$order->created_at" :total="$order->total" :products="$order->products"/>    
+ @endforeach
 
  </div>
 

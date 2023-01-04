@@ -33,8 +33,7 @@ class UserController extends Controller
             'user_id'=>$getUser->user_id,
             'name'=> $getUser->name,
             'email'=>$getUser->email,
-            'first_name'=>$getUser->first_name,
-            'last_name'=>$getUser->last_name,
+            'role'=>$getUser->role,
           ];  
           session()->put('user',$user);
           return redirect('/');
@@ -59,8 +58,6 @@ class UserController extends Controller
         ]);
 
            $user = new User();
-           $user->first_name = $request['first_name'];
-           $user->last_name = $request['last_name'];
            $user->email = $request['email'];
            $user->password = Hash::make($request['password']);
            $user->save();

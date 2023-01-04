@@ -46,7 +46,7 @@ class CheckoutController extends Controller
         ]);
          
         //Save User Address in DataBase
-        try{
+        
         $address = UserAddress::updateOrCreate(
          [
          'first_name' => $request['first_name'],
@@ -75,7 +75,6 @@ class CheckoutController extends Controller
             session()->put('order_address',$userAddress);
         }else{
             session()->remove('order_address');
-            $userAddress = session()->get('order_address');
             $userAddress = [
                 'user_address_id'=>$address->user_address_id,
                 'first_name' => $request['first_name'],
@@ -90,8 +89,5 @@ class CheckoutController extends Controller
         }
         $shipping = Shipping::where('city',$request['city'])->first();
         return view('confirmCheckout')->with(compact('shipping'));
-        }catch(\Exception $e){
-            return abort(500);
-        }
     }
 }
