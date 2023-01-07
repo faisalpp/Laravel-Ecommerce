@@ -4,8 +4,8 @@
 
 Furnica Furniture Website
 
-Dscription: 
- Furnica Furniture Website is a online ecommerce platform where user can buy all types of furnitures
+## Dscription: 
+ # Furnica Furniture Website is a online ecommerce platform where user can buy all types of furnitures
  e.g Chairs, Sofas and Beds. User can view individual product, read its properties and add it Cart System.
  User has two payment options:
   1. Cash At Door Step 
