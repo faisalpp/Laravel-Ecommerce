@@ -2,7 +2,8 @@
 
 ## About Laravel
 
-                            <h1>Furnica Furniture Website</h1>
+Furnica Furniture Website
+
 Dscription: 
  Furnica Furniture Website is a online ecommerce platform where user can buy all types of furnitures
  e.g Chairs, Sofas and Beds. User can view individual product, read its properties and add it Cart System.
