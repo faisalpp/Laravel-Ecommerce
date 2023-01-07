@@ -4,18 +4,18 @@
 
                             <h1>Furnica Furniture Website</h1>
 Dscription: 
-      Furnica Furniture Website is a online ecommerce platform where user can buy all types of furnitures
-      e.g Chairs, Sofas and Beds. User can view individual product, read its properties and add it Cart System.
-      User has two payment options
-        1. Cash At Door Step 
-        2. Payment with STRIPE Payment System
-      There is a good looking dashboard for admin to interact with all sort of CRUD operations.
-      Admin can able to create,update and delete below tabels:
-      1.Products contains individual product information.
-      2.Categories with related image
-      3.Shipping Price for different countries and cities
-      4.All Admin Delete Operation is secure with Soft Delete Feature
-      5.User can retrive deleted records with recycle bin view.
+ Furnica Furniture Website is a online ecommerce platform where user can buy all types of furnitures
+ e.g Chairs, Sofas and Beds. User can view individual product, read its properties and add it Cart System.
+ User has two payment options:
+  1. Cash At Door Step 
+  2. Payment with STRIPE Payment System
+ There is a good looking dashboard for admin to interact with all sort of CRUD operations.
+ Admin can able to create,update and delete below tabels:
+  1.Products contains individual product information.
+  2.Categories with related image
+  3.Shipping Price for different countries and cities
+  4.All Admin Delete Operation is secure with Soft Delete Feature
+  5.User can retrive deleted records with recycle bin view.
 
 What I do in Feature with this Project?
 
